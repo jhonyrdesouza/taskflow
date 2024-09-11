@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { UserController } from 'src/controllers/user.contraoller';
+import { UserController } from 'src/controllers/user.controller';
 import { UserRepository } from 'src/infrastructure/database/repositories/user.repository';
 import { UserService } from 'src/services/user.service';
 import { JwtService } from '@nestjs/jwt';
