@@ -1,0 +1,25 @@
+{
+  "name": "taskflow",
+  "description": "task management system repository",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "start": "turbo run start --parallel --no-daemon",
+    "build": "dotenv -e .env -- turbo run build --no-daemon",
+    "dev": "dotenv -e .env -- turbo run dev --parallel --no-daemon",
+    "clean": "turbo run clean --parallel --no-daemon && rimraf node_modules .turbo",
+    "format": "prettier --write \"**/*.{ts,js,tsx,md}\"",
+    "lint": "turbo run lint --no-daemon",
+    "upgrade:packages": "turbo run upgrade --no-daemon",
+    "generate": "turbo run generate --parallel --no-daemon "
+  },
+  "devDependencies": {
+    "dotenv-cli": "^7.4.2",
+    "prettier": "^3.3.3",
+    "turbo": "^2.1.1"
+  },
+  "packageManager": "pnpm@9.1.2",
+  "engines": {
+    "node": "20.x"
+  }
+}

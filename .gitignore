@@ -1,0 +1,57 @@
+# Ignore compiled output:
+dist
+node_modules
+
+# Logs:
+logs
+*.log
+pnpm-debug.log*
+
+# OS:
+.DS_Store
+
+# Tests:
+coverage
+.nyc_output
+
+# IDE - VSCode:
+.vscode/*
+!.vscode/settings.json
+!.vscode/tasks.json
+!.vscode/launch.json
+!.vscode/extensions.json
+
+# IDEs and others editors:
+.idea
+.project
+.classpath
+.c9/
+*.launch
+.settings/
+*.sublime-workspace
+
+# Turborepo:
+.turbo
+
+# Next.js:
+.next/
+out/
+
+# Build:
+build
+
+# Misc:
+.DS_Store
+*.pem
+*.key
+*.key.pub
+
+# Local env files:
+.env*
+
+# Vercel:
+.vercel
+
+# Typescript:
+*.tsbuildinfo
+next-env.d.ts
