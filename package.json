@@ -11,7 +11,8 @@
     "format": "prettier --write \"**/*.{ts,js,tsx,md}\"",
     "lint": "turbo run lint --no-daemon",
     "upgrade:packages": "turbo run upgrade --no-daemon",
-    "generate": "turbo run generate --parallel --no-daemon "
+    "generate": "turbo run generate --parallel --no-daemon",
+    "migrations": "turbo run migrations --parallel --no-daemon"
   },
   "devDependencies": {
     "dotenv-cli": "^7.4.2",
