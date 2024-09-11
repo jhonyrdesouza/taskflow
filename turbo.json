@@ -17,6 +17,8 @@
       "cache": false,
       "persistent": true
     },
-    "upgrade": { "dependsOn": [] }
+    "upgrade": { "dependsOn": [] },
+    "generate": { "dependsOn": [] },
+    "migrations": { "dependsOn": [] }
   }
 }
