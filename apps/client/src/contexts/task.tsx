@@ -1,16 +1,21 @@
-import { ReactNode, createContext, useState } from 'react';
+import { ReactNode, createContext, useEffect, useState } from 'react';
 import { toast } from 'sonner';
+import api from '../lib/axios';
 
 export type Task = {
-  name: string;
-  isCompleted?: boolean;
+  cuid?: string;
+  title: string;
+  description?: string;
+  priority?: string;
+  completed?: boolean;
+  dueAt?: string | null;
 };
 
 type TaskContext = {
   tasks: Task[];
   addTask: (values: Task) => void;
-  deleteTask: (id: string) => void;
-  completeTask: (id: string) => void;
+  deleteTask: (cuid: string) => void;
+  completeTask: (cuid: string) => void;
 };
 
 export const TaskContext = createContext<TaskContext>({
@@ -23,30 +28,51 @@ export const TaskContext = createContext<TaskContext>({
 export const TaskProvider = ({ children }: { children: ReactNode }) => {
   const [tasks, setTasks] = useState<Task[]>([]);
 
-  const addTask = (values: Task) => {
-    const sameName = tasks.filter((task) => task.name === values.name);
+  useEffect(() => {
+    // Fetch tasks when the component is mounted
+    const loadTasks = async () => {
+      try {
+        const response = await api.get('/task');
+        setTasks(response.data.tasks);
+      } catch (error) {
+        console.error('Error fetching tasks:', error);
+      }
+    };
 
-    if (sameName.length > 0) {
-      toast.error('Uma tarefa com o mesmo nome já foi adicionada.');
+    loadTasks();
+  }, []); // Empty dependency array ensures this runs only once on mount
 
-      return;
+  const addTask = async (values: Task) => {
+    try {
+      const response = await api.post('/task', values);
+      setTasks((prev) => [...prev, response.data.task]);
+      toast.success('Tarefa adicionada!');
+    } catch (error) {
+      console.error('Error adding task:', error);
+      toast.error('Erro ao adicionar tarefa.');
     }
-
-    setTasks((prev) => [...prev, values]);
-
-    toast.success('Tarefa adicionada!');
   };
 
-  const deleteTask = (id: string) => {
-    setTasks((prev) => prev.filter((task) => task.name !== id));
-
-    toast.success('Tarefa removida com sucesso!');
+  const deleteTask = async (cuid: string) => {
+    try {
+      await api.delete(`/task/${cuid}`);
+      setTasks((prev) => prev.filter((task) => task.cuid !== cuid));
+      toast.success('Tarefa removida com sucesso!');
+    } catch (error) {
+      console.error('Error deleting task:', error);
+      toast.error('Erro ao remover tarefa.');
+    }
   };
 
-  const completeTask = (id: string) => {
-    setTasks((prev) => prev.map((task) => (task.name === id ? { ...task, isCompleted: true } : task)));
-
-    toast.success('Parabéns!! Voce concluiu uma tarefa.');
+  const completeTask = async (cuid: string) => {
+    try {
+      const response = await api.patch(`/task/${cuid}`, { completed: true });
+      setTasks((prev) => prev.map((task) => (task.cuid === cuid ? response.data.task : task)));
+      toast.success('Parabéns! Você concluiu uma tarefa.');
+    } catch (error) {
+      console.error('Error completing task:', error);
+      toast.error('Erro ao completar tarefa.');
+    }
   };
 
   return <TaskContext.Provider value={{ tasks, addTask, deleteTask, completeTask }}>{children}</TaskContext.Provider>;

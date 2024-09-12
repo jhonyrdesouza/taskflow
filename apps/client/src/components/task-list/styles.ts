@@ -44,7 +44,6 @@ export const TaskItemStyled = styled.div<{ $isCompleted?: boolean }>`
   display: flex;
   align-items: center;
   justify-content: space-between;
-
   border: ${(props) => (props.$isCompleted ? props.theme['gray-500'] : props.theme['gray-400'])};
 
   h2 {
@@ -52,6 +51,11 @@ export const TaskItemStyled = styled.div<{ $isCompleted?: boolean }>`
     font-size: 14px;
     text-decoration: ${(props) => (props.$isCompleted ? 'line-through' : 'none')};
     line-clamp: 1;
+  }
+
+  p {
+    color: ${(props) => props.theme['gray-200']};
+    font-size: 12px;
   }
 `;
 
@@ -116,4 +120,25 @@ export const NoTaskFoundTextContainer = styled.div`
   justify-content: center;
   flex-direction: column;
   gap: 4px;
+`;
+
+export const PriorityTag = styled.span<{ $priority?: string }>`
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 700;
+  color: ${({ theme }) => theme['gray-200']};
+  background-color: ${(props) => {
+    switch (props.$priority) {
+      case 'high':
+        return props.theme['red-500'];
+      case 'medium':
+        return props.theme['yellow-500'];
+      case 'low':
+        return props.theme['green-500'];
+      default:
+        return props.theme['blue-500'];
+    }
+  }};
 `;

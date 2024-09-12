@@ -26,5 +26,5 @@ const Section = styled.section`
   max-width: 763px;
   padding-inline: 1.5rem;
   margin-inline: auto;
-  margin-top: 10%;
+  margin-top: 4%;
 `;

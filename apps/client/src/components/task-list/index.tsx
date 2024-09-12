@@ -14,7 +14,7 @@ import { TaskItem } from './task-item';
 export const TaskList = () => {
   const { tasks } = useContext(TaskContext);
 
-  const isCompleted = tasks.filter((task) => task.isCompleted);
+  const isCompleted = tasks.filter((task) => task.completed);
 
   return (
     <TaskListContainer>
@@ -32,20 +32,18 @@ export const TaskList = () => {
       </TaskLabelContainer>
 
       <TaskItemContainer>
-        {tasks.map((task) => (
-          <TaskItem key={task.name} task={task} />
-        ))}
+        {tasks.length > 0 ? (
+          tasks.map((task) => <TaskItem key={task.cuid} task={task} />)
+        ) : (
+          <NoTaskFoundContainer>
+            <Clipboard />
+            <NoTaskFoundTextContainer>
+              <h3>Você ainda não tem tarefas cadastradas</h3>
+              <p>Crie tarefas e organize seus itens a fazer</p>
+            </NoTaskFoundTextContainer>
+          </NoTaskFoundContainer>
+        )}
       </TaskItemContainer>
-
-      {tasks.length === 0 && (
-        <NoTaskFoundContainer>
-          <Clipboard />
-          <NoTaskFoundTextContainer>
-            <h3>Você ainda não tem tarefas cadastradas</h3>
-            <p>Crie tarefas e organize seus itens a fazer</p>
-          </NoTaskFoundTextContainer>
-        </NoTaskFoundContainer>
-      )}
     </TaskListContainer>
   );
 };

@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const Form = styled.form`
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 8px;
 `;
 
@@ -17,6 +17,39 @@ export const Input = styled.input`
   ::placeholder {
     color: ${({ theme }) => theme['gray-300']};
   }
+
+  &:focus,
+  &:focus-visible {
+    border: 1px solid ${({ theme }) => theme['purple-500']};
+  }
+`;
+
+export const Textarea = styled.textarea`
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  color: inherit;
+  background-color: ${({ theme }) => theme['gray-500']};
+  border: 1px solid ${({ theme }) => theme['gray-700']};
+  resize: vertical;
+
+  ::placeholder {
+    color: ${({ theme }) => theme['gray-300']};
+  }
+
+  &:focus,
+  &:focus-visible {
+    border: 1px solid ${({ theme }) => theme['purple-500']};
+  }
+`;
+
+export const Select = styled.select`
+  width: 100%;
+  padding: 16px;
+  border-radius: 8px;
+  color: inherit;
+  background-color: ${({ theme }) => theme['gray-500']};
+  border: 1px solid ${({ theme }) => theme['gray-700']};
 
   &:focus,
   &:focus-visible {
