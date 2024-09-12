@@ -12,6 +12,8 @@ TaskFlow é um sistema intuitivo de gerenciamento de tarefas que permite aos usu
 O projeto é construído utilizando NestJS para fornecer uma API RESTful robusta, com validações de permissões e proteção contra a criação de tarefas duplicadas.
 >>>>>>> 658d345 (chore: update .gitignore, add .env template, and enhance readme)
 
+![architecture](./architecture.png)
+
 ## 🐛 **Como executar a aplicação:**
 
 O projeto segue uma arquitetura monorepo, utilizando o Turborepo como auxiliar. Para rodar o sistema localmente, siga os passos abaixo:
