@@ -1,7 +1,7 @@
 {
   "name": "api",
   "version": "0.0.1",
-  "description": "Repository of the api application of the taskflow application",
+  "description": "repository of the api application of the taskflow application",
   "private": true,
   "scripts": {
     "build": "nest build",
