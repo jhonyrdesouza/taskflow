@@ -2,9 +2,15 @@
 
 ## 🎯 **Descrição do projeto:**
 
+<<<<<<< HEAD
 TaskFlow é um sistema intuitivo de gerenciamento de tarefas que permite aos usuários realizar operações de CRUD (Criar, Ler, Atualizar e Excluir) de maneira simples.O projeto é construído utilizando NestJS para fornecer uma API RESTful robusta, com validações de permissões e proteção contra a criação de tarefas duplicadas.
 
 ![architecture](./architecture.png)
+=======
+TaskFlow é um sistema intuitivo de gerenciamento de tarefas que permite aos usuários realizar operações de CRUD (Criar, Ler, Atualizar e Excluir) de maneira simples.
+
+O projeto é construído utilizando NestJS para fornecer uma API RESTful robusta, com validações de permissões e proteção contra a criação de tarefas duplicadas.
+>>>>>>> 658d345 (chore: update .gitignore, add .env template, and enhance readme)
 
 ## 🐛 **Como executar a aplicação:**
 
@@ -42,8 +48,12 @@ $ openssl rsa -in private.pem -pubout -out public.pem
 
 5. Certifique-se de ter um banco de dados PostgreSQL disponível. Você pode instalá-lo localmente ou rodá-lo via Docker (recomendado). Para configurar o Docker, consulte a seção abaixo. Uma vez que o PostgreSQL estiver rodando, prossiga para o próximo passo:
 
+<<<<<<< HEAD
 6. Para **executar as migrações** no banco de dados com a definições contidas em `schema.prisma`,
    execute na raiz do projeto `pnpm migrations` em seu terminal:
+=======
+6. Para **executar as migrações** no banco de dados com a definições contidas em `schema.prisma`, execute na raiz do projeto `pnpm migrations` em seu terminal:
+>>>>>>> 658d345 (chore: update .gitignore, add .env template, and enhance readme)
 
 ```bash
 $  pnpm migrations
