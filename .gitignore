@@ -47,7 +47,7 @@ build
 *.key.pub
 
 # Local env files:
-.env*
+.env
 
 # Vercel:
 .vercel
