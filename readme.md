@@ -2,9 +2,9 @@
 
 ## 🎯 **Descrição do projeto:**
 
-TaskFlow é um sistema intuitivo de gerenciamento de tarefas que permite aos usuários realizar operações de CRUD (Criar, Ler, Atualizar e Excluir) de maneira simples.
+TaskFlow é um sistema intuitivo de gerenciamento de tarefas que permite aos usuários realizar operações de CRUD (Criar, Ler, Atualizar e Excluir) de maneira simples.O projeto é construído utilizando NestJS para fornecer uma API RESTful robusta, com validações de permissões e proteção contra a criação de tarefas duplicadas.
 
-O projeto é construído utilizando NestJS para fornecer uma API RESTful robusta, com validações de permissões e proteção contra a criação de tarefas duplicadas.
+![architecture](./architecture.png)
 
 ## 🐛 **Como executar a aplicação:**
 
@@ -16,7 +16,7 @@ O projeto segue uma arquitetura monorepo, utilizando o Turborepo como auxiliar. 
 $ git clone https://github.com/jhonyrdesouza/taskflow
 ```
 
-2. Faça uma cópia do arquivo `.env.example` para `.env` em cada app (client e API) e configure as variáveis de ambiente necessárias.
+2. Faça uma cópia do arquivo `.env.template` para `.env` em cada app (client e API) e configure as variáveis de ambiente necessárias.
 
 3. Gerando Chaves JWT RSA 256 (Pública e Privada): O TaskFlow utiliza autenticação baseada em tokens JWT (JSON Web Tokens), assinados com o algoritmo RSA 256, garantindo maior segurança nas operações. Para que a aplicação possa assinar e verificar esses tokens, é necessário gerar um par de chaves: uma chave privada para assinar os tokens e uma chave pública para verificar as assinaturas.
 
