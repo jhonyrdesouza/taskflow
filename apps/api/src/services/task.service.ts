@@ -62,24 +62,16 @@ export class TaskService {
   }
 
   async findOne(userId: string, cuid: string): Promise<Task> {
-    const cached = await this.cache.get<Task>('find.one.' + cuid);
-
-    if (cached) {
-      return cached;
-    }
-
     const existingTask = await this.taskRepository.findUnique({ where: { cuid, userId } });
 
     if (!existingTask) {
       throw new EntityNotFoundException();
     }
 
-    await this.cache.set('find.one.' + cuid, existingTask);
-
     return existingTask;
   }
 
-  async update(userId: string, cuid: string, { title, description, completed, priority, dueAt }: UpdateTaskDto) {
+  async update(userId: string, cuid: string, { completed }: UpdateTaskDto) {
     const existingTask = await this.taskRepository.findUnique({ where: { cuid, userId } });
 
     if (!existingTask) {
@@ -88,7 +80,7 @@ export class TaskService {
 
     return await this.taskRepository.update({
       where: { cuid },
-      data: { title, description, completed, priority, dueAt, user: { connect: { cuid } } },
+      data: { completed },
     });
   }
 
