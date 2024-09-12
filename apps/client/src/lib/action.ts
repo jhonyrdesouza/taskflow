@@ -1,9 +1,9 @@
 import { setCookie } from 'nookies';
 import { redirect } from 'react-router-dom';
 import type { z } from 'zod';
+import { loginSchema } from '../pages/sign-in';
 import { signUpSchema } from '../pages/sign-up';
 import api from './axios';
-import { loginSchema } from '../pages/sign-in';
 
 export async function createNewAccount(data: z.infer<typeof signUpSchema>) {
   const { fullname, email, password } = data;

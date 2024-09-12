@@ -74,7 +74,7 @@ export const SignUp = () => {
   return (
     <Container>
       <FormContainer>
-        <h1>Crie sua conta em Taskflow</h1>
+        <h1>Crie sua conta em taskflow 🎯</h1>
 
         <form onSubmit={handleSubmit(onSubmit)}>
           <FormGroup>

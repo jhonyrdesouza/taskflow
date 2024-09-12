@@ -18,13 +18,14 @@ export const FormContainer = styled.div`
   flex-direction: column;
   gap: 2rem;
   padding: 2.5rem;
-  border: 1px solid ${({ theme }) => theme['zinc-900']};
+  border: 1px solid ${({ theme }) => theme['violet-500']};
   border-radius: 8px;
 
   h1 {
     font-size: 22px;
     font-weight: 700;
     letter-spacing: -5%;
+    text-align: center;
   }
 
   form {
