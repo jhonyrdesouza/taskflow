@@ -1,7 +1,8 @@
 import { ApiProperty, PartialType } from '@nestjs/swagger';
-import { CreateAccountDto } from './create-account.dto';
+import { Priority } from '@prisma/client';
+import { CreateTaskDto } from './create-task.dto';
 
-export class UpdateTaskDto extends PartialType(CreateAccountDto) {
+export class UpdateTaskDto extends PartialType(CreateTaskDto) {
   @ApiProperty({
     description: 'Título da tarefa. Este campo é opcional ao atualizar uma tarefa.',
     example: 'Atualizar relatório financeiro',
@@ -18,11 +19,11 @@ export class UpdateTaskDto extends PartialType(CreateAccountDto) {
 
   @ApiProperty({
     description: 'Nível de prioridade da tarefa. Este campo é opcional ao atualizar uma tarefa.',
-    enum: ['ALTA', 'MÉDIA', 'BAIXA'],
-    example: 'ALTA',
+    enum: ['LOW', 'MEDIUM', 'HIGH', 'URGENT'],
+    example: 'LOW',
     required: false,
   })
-  priority?: 'ALTA' | 'MÉDIA' | 'BAIXA';
+  priority?: Priority;
 
   @ApiProperty({
     description: 'Indica se a tarefa está concluída. Este campo é opcional ao atualizar uma tarefa.',

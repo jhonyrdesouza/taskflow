@@ -1,6 +1,6 @@
 import { HttpException, HttpStatus } from '@nestjs/common';
 
-export class EmailAlreadyExists extends HttpException {
+export class EmailAlreadyExistsException extends HttpException {
   constructor() {
     super(
       {
@@ -12,7 +12,7 @@ export class EmailAlreadyExists extends HttpException {
   }
 }
 
-export class InvalidCredentials extends HttpException {
+export class InvalidCredentialsException extends HttpException {
   constructor() {
     super(
       {
@@ -24,7 +24,7 @@ export class InvalidCredentials extends HttpException {
   }
 }
 
-export class EntityNotFound extends HttpException {
+export class EntityNotFoundException extends HttpException {
   constructor() {
     super(
       {
@@ -32,6 +32,42 @@ export class EntityNotFound extends HttpException {
         message: `Desculpe, mas o que você procura não foi encontrado(a)`,
       },
       HttpStatus.NOT_FOUND,
+    );
+  }
+}
+
+export class UnauthorizedException extends HttpException {
+  constructor() {
+    super(
+      {
+        error: 'Não Autorizado',
+        message: 'Não autorizado porque você não tem as permissões',
+      },
+      HttpStatus.UNAUTHORIZED,
+    );
+  }
+}
+
+export class EmptyListException extends HttpException {
+  constructor() {
+    super(
+      {
+        error: 'Lista vazia',
+        message: 'A lista está vazia no momento',
+      },
+      HttpStatus.LENGTH_REQUIRED,
+    );
+  }
+}
+
+export class TaskNameAlreadyUsedException extends HttpException {
+  constructor() {
+    super(
+      {
+        error: 'Conflito de Nome na Task',
+        message: `Uma tarefa com este nome já existe`,
+      },
+      HttpStatus.CONFLICT,
     );
   }
 }

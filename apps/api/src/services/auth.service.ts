@@ -2,7 +2,11 @@ import { Injectable } from '@nestjs/common';
 import { createHash } from 'crypto';
 import { CreateAccountDto } from 'src/domain/dtos/create-account.dto';
 import { LoginDto } from 'src/domain/dtos/login.dto';
-import { EmailAlreadyExists, EntityNotFound, InvalidCredentials } from 'src/domain/exceptions/errors-handler.exception';
+import {
+  EmailAlreadyExistsException,
+  EntityNotFoundException,
+  InvalidCredentialsException,
+} from 'src/domain/exceptions/errors-handler.exception';
 import { UserRepository } from 'src/infrastructure/database/repositories/user.repository';
 import { BcryptService } from './bcrypt.service';
 import { JwtService } from './jwt.service';
@@ -19,7 +23,7 @@ export class AuthService {
     const emailAlreadyExists = await this.userRepository.findUnique({ where: { email } });
 
     if (emailAlreadyExists) {
-      throw new EmailAlreadyExists();
+      throw new EmailAlreadyExistsException();
     }
 
     const passwordHashed = await this.bcryptService.hash(password);
@@ -43,13 +47,13 @@ export class AuthService {
     const user = await this.userRepository.findUnique({ where: { email } });
 
     if (!user) {
-      throw new EntityNotFound();
+      throw new EntityNotFoundException();
     }
 
     const isPasswordValid = await this.bcryptService.compare(password, user.password);
 
     if (!isPasswordValid) {
-      throw new InvalidCredentials();
+      throw new InvalidCredentialsException();
     }
 
     const token = await this.jwtService.encode(user);
