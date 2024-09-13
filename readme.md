@@ -2,9 +2,11 @@
 
 ## 🎯 **Descrição do projeto:**
 
+![cover](./images/cover.png)
+
 TaskFlow é um sistema intuitivo de gerenciamento de tarefas que permite aos usuários realizar operações de CRUD (Criar, Ler, Atualizar e Excluir) de maneira simples.O projeto é construído utilizando NestJS para fornecer uma API RESTful robusta, com validações de permissões e proteção contra a criação de tarefas duplicadas.
 
-![architecture](./architecture.png)
+![architecture](./images/architecture.png)
 
 ## 🐛 **Como executar a aplicação:**
 
@@ -16,7 +18,7 @@ O projeto segue uma arquitetura monorepo, utilizando o Turborepo como auxiliar. 
 $ git clone https://github.com/jhonyrdesouza/taskflow
 ```
 
-2. Faça uma cópia do arquivo `.env.template` para `.env` em cada app (client e API) e configure as variáveis de ambiente necessárias.
+2. Faça uma cópia do arquivo `.env.template` para `.env` em cada app (client e api) e configure as variáveis de ambiente necessárias.
 
 3. Gerando Chaves JWT RSA 256 (Pública e Privada): O TaskFlow utiliza autenticação baseada em tokens JWT (JSON Web Tokens), assinados com o algoritmo RSA 256, garantindo maior segurança nas operações. Para que a aplicação possa assinar e verificar esses tokens, é necessário gerar um par de chaves: uma chave privada para assinar os tokens e uma chave pública para verificar as assinaturas.
 
@@ -48,7 +50,7 @@ $ openssl rsa -in private.pem -pubout -out public.pem
 $  pnpm migrations
 ```
 
-7. Gere a instância do **client do prisma** (código Typescript) (juntamente com as entidades definidas no `schema.prisma`), executando `pnpm generate` em seu terminal e escolhendo:
+7. Gere a instância do **client do prisma** (código Typescript, juntamente com as entidades definidas no `schema.prisma`), executando `pnpm generate` em seu terminal:
 
 ```bash
 $  pnpm generate
@@ -89,5 +91,7 @@ $ git merge feat/<feature-name> --no-ff
 ## 🔗 **Link da documentação da api no Swagger:**
 
 A aplicação possui uma documentação detalhada da API no Swagger para obter informações abrangentes sobre os endpoints, parâmetros, autenticação e exemplos de solicitações e respostas:
+
+![swagger](./images/swagger.png)
 
 **Nota:** O acesso é em: `localhost:3000/api/docs`.
