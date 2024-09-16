@@ -21,7 +21,7 @@ export class TaskService {
     private readonly userRepository: UserRepository,
   ) {}
 
-  async create(userId: string, { title, description, completed, priority, dueAt }: CreateTaskDto): Promise<Task> {
+  async create(userId: string, { title, description, completed, priority }: CreateTaskDto): Promise<Task> {
     const user = await this.userRepository.findUnique({ where: { cuid: userId } });
 
     if (!user) {
@@ -32,14 +32,19 @@ export class TaskService {
       throw new UnauthorizedException();
     }
 
-    const existingTask = await this.taskRepository.findUnique({ where: { title } });
+    const existingTask = await this.taskRepository.findByTitle({
+      where: {
+        userId,
+        title,
+      },
+    });
 
     if (existingTask) {
       throw new TaskNameAlreadyUsedException();
     }
 
     return await this.taskRepository.create({
-      data: { title, description, completed, priority, dueAt, user: { connect: { cuid: userId } } },
+      data: { title, description, completed, priority, user: { connect: { cuid: userId } } },
     });
   }
 

@@ -1,9 +1,9 @@
 import { Logger, ValidationPipe, VersioningType } from '@nestjs/common';
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
-import { HttpExceptionFilter } from './helpers/filters/http-expection.filter';
-import { LoggingInterceptor } from './helpers/interceptors/logging.interceptor';
-import { options } from './helpers/pipes/validation-options.pipe';
+import { HttpExceptionFilter } from './domain/helpers/filters/http-expection.filter';
+import { LoggingInterceptor } from './domain/helpers/interceptors/logging.interceptor';
+import { options } from './domain/helpers/pipes/validation-options.pipe';
 import { swaggerConfig } from './infrastructure/config/swagger.config';
 import { ApplicationModule } from './modules/application.module';
 
