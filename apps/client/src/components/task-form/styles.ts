@@ -72,7 +72,7 @@ export const Button = styled.button`
   transition: background-color 100ms ease-in-out;
 
   &:hover {
-    background-color: ${({ theme }) => theme['blue-500']};
+    background-color: ${({ theme }) => theme['violet-800']};
   }
 
   svg {

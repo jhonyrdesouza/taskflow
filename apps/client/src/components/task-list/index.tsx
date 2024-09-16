@@ -1,4 +1,4 @@
-import { useContext } from 'react';
+import { useContext, useEffect } from 'react';
 import { TaskContext } from '../../contexts/task';
 import { Clipboard } from '../icons/clipboard';
 import {
@@ -15,6 +15,8 @@ export const TaskList = () => {
   const { tasks } = useContext(TaskContext);
 
   const isCompleted = tasks.filter((task) => task.completed);
+
+  useEffect(() => {}, [tasks]);
 
   return (
     <TaskListContainer>

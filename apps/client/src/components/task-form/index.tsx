@@ -10,7 +10,6 @@ const formSchema = z.object({
   title: z.string().min(2, 'Mínimo de 2 caracteres').max(50, 'Máximo de 50 caracteres'),
   description: z.string().optional(),
   priority: z.enum(['LOW', 'MEDIUM', 'HIGH']).optional(),
-  dueAt: z.string().nullable().optional(),
 });
 
 type FormSchema = z.infer<typeof formSchema>;
@@ -23,7 +22,6 @@ export const TaskForm = () => {
       title: '',
       description: '',
       priority: 'LOW',
-      dueAt: null,
     },
   });
 
@@ -42,7 +40,6 @@ export const TaskForm = () => {
         <option value="MEDIUM">Média</option>
         <option value="HIGH">Alta</option>
       </Select>
-      <Input type="date" {...register('dueAt')} placeholder="Data de vencimento (opcional)" />
       <Button type="submit">
         Criar
         <Plus />
