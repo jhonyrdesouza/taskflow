@@ -38,14 +38,5 @@ export class CreateTaskDto {
   @IsBoolean({ message: 'O campo "completed" deve ser um valor booleano.' })
   completed?: boolean;
 
-  @ApiProperty({
-    description: 'Data de vencimento da tarefa no formato ISO 8601',
-    example: '2024-09-30T23:59:59Z',
-    required: false,
-  })
-  @IsOptional()
-  @IsDateString()
-  dueAt?: Date;
-
   cuid?: string;
 }
