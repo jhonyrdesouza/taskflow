@@ -28,7 +28,6 @@ CREATE TABLE "Task" (
     "description" TEXT,
     "priority" "Priority",
     "completed" BOOLEAN NOT NULL DEFAULT false,
-    "dueAt" TIMESTAMP(3),
     "createdAt" TIMESTAMP(3) NOT NULL DEFAULT CURRENT_TIMESTAMP,
     "updatedAt" TIMESTAMP(3) NOT NULL,
 
@@ -43,9 +42,6 @@ CREATE UNIQUE INDEX "User_email_key" ON "User"("email");
 
 -- CreateIndex
 CREATE UNIQUE INDEX "Task_cuid_key" ON "Task"("cuid");
-
--- CreateIndex
-CREATE UNIQUE INDEX "Task_title_key" ON "Task"("title");
 
 -- AddForeignKey
 ALTER TABLE "Task" ADD CONSTRAINT "Task_userId_fkey" FOREIGN KEY ("userId") REFERENCES "User"("cuid") ON DELETE RESTRICT ON UPDATE CASCADE;

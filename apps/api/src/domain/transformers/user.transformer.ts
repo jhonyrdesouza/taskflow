@@ -1,9 +1,8 @@
 import { User } from '@prisma/client';
 
 type UserWithoutPassword = Omit<User, 'password'>;
-
-export class UserTranstormer {
-  static toUser(user: User) {
+export class UserTransformer {
+  static toUser(user: UserWithoutPassword) {
     return {
       cuid: user.cuid,
       fullname: user.fullname,

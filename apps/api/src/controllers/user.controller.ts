@@ -2,7 +2,7 @@ import { Controller, Get, HttpCode, HttpStatus, UseGuards } from '@nestjs/common
 import { ApiOperation, ApiSecurity, ApiTags } from '@nestjs/swagger';
 import { GetCurrentUser } from 'src/domain/decorators/get-current-user.decorator';
 import { JwtAuthGuard } from 'src/domain/guards/jwt-auth.guard';
-import { UserTranstormer } from 'src/domain/transformers/user.transformer';
+import { UserTransformer } from 'src/domain/transformers/user.transformer';
 import { UserService } from 'src/services/user.service';
 
 @Controller({ path: 'user', version: '1' })
@@ -21,7 +21,7 @@ export class UserController {
   })
   async me(@GetCurrentUser() cuid: string) {
     const res = await this.userService.me(cuid);
-    const user = UserTranstormer.toUser(res);
+    const user = UserTransformer.toUser(res);
 
     return { user };
   }

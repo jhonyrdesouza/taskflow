@@ -12,13 +12,13 @@ import {
   UseGuards,
 } from '@nestjs/common';
 import { ApiOperation, ApiSecurity, ApiTags } from '@nestjs/swagger';
-import { GetCurrentUser } from 'src/domain/decorators/get-current-user.decorator';
-import { CreateTaskDto } from 'src/domain/dtos/create-task.dto';
-import { FiltersTaskDto } from 'src/domain/dtos/filters-task.dto';
-import { UpdateTaskDto } from 'src/domain/dtos/update-task.dto';
-import { JwtAuthGuard } from 'src/domain/guards/jwt-auth.guard';
-import { TaskTransformer } from 'src/domain/transformers/task.transformer';
-import { TaskService } from 'src/services/task.service';
+import { GetCurrentUser } from '../domain/decorators/get-current-user.decorator';
+import { CreateTaskDto } from '../domain/dtos/create-task.dto';
+import { FiltersTaskDto } from '../domain/dtos/filters-task.dto';
+import { UpdateTaskDto } from '../domain/dtos/update-task.dto';
+import { JwtAuthGuard } from '../domain/guards/jwt-auth.guard';
+import { TaskTransformer } from '../domain/transformers/task.transformer';
+import { TaskService } from '../services/task.service';
 
 @Controller({ path: 'task', version: '1' })
 @ApiTags('task')

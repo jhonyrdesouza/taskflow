@@ -1,9 +1,9 @@
 import { Body, Controller, HttpCode, HttpStatus, Post } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
-import { CreateAccountDto } from 'src/domain/dtos/create-account.dto';
-import { LoginDto } from 'src/domain/dtos/login.dto';
-import { UserTranstormer } from 'src/domain/transformers/user.transformer';
-import { AuthService } from 'src/services/auth.service';
+import { CreateAccountDto } from '../domain/dtos/create-account.dto';
+import { LoginDto } from '../domain/dtos/login.dto';
+import { UserTransformer } from '../domain/transformers/user.transformer';
+import { AuthService } from '../services/auth.service';
 
 @Controller({ path: 'auth', version: '1' })
 @ApiTags('auth')
@@ -20,7 +20,7 @@ export class AuthController {
   async register(@Body() data: CreateAccountDto) {
     const { user, token } = await this.authService.register(data);
 
-    const res = UserTranstormer.toUser(user);
+    const res = UserTransformer.toUser(user);
     return { user: res, token };
   }
 
@@ -34,7 +34,7 @@ export class AuthController {
   async login(@Body() data: LoginDto) {
     const { user, token } = await this.authService.login(data);
 
-    const res = UserTranstormer.toUser(user);
+    const res = UserTransformer.toUser(user);
     return { user: res, token };
   }
 }

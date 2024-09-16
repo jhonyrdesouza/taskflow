@@ -1,7 +1,7 @@
 import { Controller, Get, HttpCode, HttpStatus } from '@nestjs/common';
 import { ApiOperation, ApiTags } from '@nestjs/swagger';
 import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
-import { PrismaHealthCheckIndicator } from 'src/services/health-check.service';
+import { PrismaHealthCheckIndicator } from '../services/health-check.service';
 
 @Controller({ path: 'health-check', version: '1' })
 @ApiTags('health check')

@@ -8,7 +8,6 @@ export class TaskTransformer {
       description: task.description,
       priority: task.priority,
       completed: task.completed,
-      dueAt: task.dueAt,
     };
   }
 

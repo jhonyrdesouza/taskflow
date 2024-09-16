@@ -20,6 +20,12 @@ export class TaskRepository {
     return this.task.findUnique({ where });
   }
 
+  async findByTitle(params: { where: Prisma.TaskWhereInput }): Promise<Task | null> {
+    const { where } = params;
+
+    return this.task.findFirst({ where });
+  }
+
   async findMany(params: {
     skip?: number;
     take?: number;
